@@ -1,23 +1,697 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+  <!-- Schema.org FAQ 구조화 데이터 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "시험관태아보험은 일반 태아보험과 무엇이 다른가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "시험관태아보험은 일반 태아보험 가입이 어려운 경우를 위해 설계된 상품입니다. 시험관 시술(인공수정 포함)로 인한 다태아(쌍둥이) 임신, 고위험 산모 등에게 특화된 가입 조건과 보장 항목을 제공하며, 일반 보험 대비 가입 가능 시기나 조건이 까다로울 수 있습니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "시험관태아보험 가입 시기는 언제인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "일반적으로 임신 22주 이전(고위험 산모는 더 일찍)에 가입해야 태아 특약(선천성 질환 등)을 보장받을 수 있습니다. 시험관 임신의 경우 일반 임신보다 더 철저한 심사가 필요하므로 임신 사실 확인 즉시 전문가와 상담하여 가입을 서두르는 것이 좋습니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "시험관태아보험 가입 조건이 일반 보험보다 까다로운가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "네, 시험관 시술 과정에서 산모의 병력이나 임신 합병증 발생 가능성이 높을 수 있어 심사가 까다로울 수 있습니다. 특히 다태아(쌍둥이) 임신이거나 산모 나이가 많을 경우, 특정 질환 이력이 있을 경우 고지 의무를 철저히 지켜야 합니다. 하지만 고지 내용을 바탕으로 적절한 상품을 찾는 것이 중요합니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "가장 저렴한 시험관태아보험을 찾는 팁이 있나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "불필요한 보장을 줄이고 핵심 보장(선천성 질환, 저체중아 인큐베이터 등) 위주로 구성합니다. 또한 보험료가 저렴한 손해보험사 상품과 생명보험사 상품을 비교하고, 보장 기간(30세 만기 vs 100세 만기)을 선택할 때 신중하게 고려하는 것이 중요합니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "태아보험에 가입할 때 다태아(쌍둥이)는 어떻게 가입하나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "다태아의 경우 태아 1명당 각각의 보험에 가입해야 합니다. 1인당 보험료는 단태아보다 높게 책정될 수 있으며, 가입 가능한 보장이 일부 제한될 수 있습니다. 여러 보험사 상품을 비교하여 다태아에게 유리한 상품을 찾는 것이 중요합니다."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- 스타일: 부드럽고 다채로운 색, 타이틀 강조, 계층 구조 -->
+  <style>
+    :root {
+      --primary-color: #004d40; /* 깊은 녹색 */
+      --secondary-color: #4db6ac; /* 부드러운 청록색 */
+      --accent-color: #e0f2f1; /* 밝은 청록색 */
+      --highlight-color: #f1f8e9; /* 부드러운 베이지/아이보리 */
+      --text-color: #263238; /* 진한 회색 */
+      --bg-light: #f5f5f5; /* 밝은 배경 */
+      --bg-white: #ffffff; /* 흰색 배경 */
+      --btn-color: #ff8a65; /* 따뜻한 주황색 */
+      --btn-hover: #ff7043; /* 진한 주황색 */
+      --table-border-color: #e0e0e0;
+      --graph-bar-color: #81c784;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      margin:0; padding:0;
+      background-color: var(--bg-light);
+      color: var(--text-color);
+      line-height:1.7;
+    }
+    .container {
+      max-width: 1000px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+    header {
+      background-color: var(--primary-color);
+      padding: 30px 20px;
+      text-align: center;
+      color: var(--bg-white);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      font-weight:700;
+    }
+    header h1 a {
+      color: var(--bg-white);
+      text-decoration: none;
+    }
+    .hero {
+      background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+      color: var(--primary-color);
+      text-align: center;
+      padding: 80px 20px;
+      border-bottom: 5px solid var(--primary-color);
+    }
+    .hero h1 {
+      font-size: 3.2em;
+      margin-bottom: 20px;
+      font-weight:900;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+      color: var(--primary-color);
+    }
+    .hero p {
+      font-size: 1.3em;
+      margin-bottom: 30px;
+      font-weight: 500;
+    }
+    .cta-btn {
+      background-color: var(--btn-color);
+      color: var(--bg-white);
+      padding: 18px 45px;
+      font-size:1.3em;
+      font-weight: bold;
+      border:none;
+      border-radius:50px;
+      cursor:pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .cta-btn:hover {
+      background-color: var(--btn-hover);
+      transform: translateY(-3px);
+    }
+
+    /* 상세 견적 폼 스타일 */
+    .compare-form-box {
+      background-color: var(--bg-white);
+      padding: 35px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      margin-top: 30px;
+      border: 1px solid var(--accent-color);
+    }
+    .compare-form-box h2 {
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 25px;
+      font-size:2.2em;
+      font-weight:700;
+    }
+    .compare-form-box p {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #555;
+        font-size: 1.1em;
+    }
+    .compare-form-box label {
+      display: block;
+      margin-bottom:8px;
+      font-weight:500;
+      color: var(--text-color);
+    }
+    .compare-form-box input[type="text"],
+    .compare-form-box input[type="tel"],
+    .compare-form-box input[type="email"],
+    .compare-form-box select {
+      width:100%;
+      padding:12px;
+      margin-bottom:20px;
+      border:1px solid #ccc;
+      border-radius:6px;
+      box-sizing:border-box;
+      font-size:1em;
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group select { appearance: none; background: #fff url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%232c3e50' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px; }
+
+    /* 콘텐츠 섹션 스타일 */
+    .content-section {
+      padding: 60px 0;
+      background-color: var(--bg-white);
+      margin-top: 30px;
+      border-radius:10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    .content-section h2 {
+      font-size: 2.5em;
+      color: var(--primary-color);
+      margin-bottom:30px;
+      font-weight:700;
+      text-align:center;
+      border-bottom: 3px solid var(--accent-color);
+      padding-bottom: 10px;
+      display: table;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .content-section h3 {
+      font-size:1.8em;
+      color: var(--secondary-color);
+      margin-top:30px;
+      margin-bottom:15px;
+      border-left: 5px solid var(--secondary-color);
+      padding-left: 10px;
+      font-weight: 600;
+    }
+    .content-section h4 {
+        font-size: 1.3em;
+        color: var(--primary-color);
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-weight: 500;
+    }
+    .content-section p {
+        font-size: 1.1em;
+        margin-bottom: 20px;
+        color: #444;
+    }
+    .content-section ul {
+        list-style: none;
+        padding-left: 0;
+    }
+    .content-section ul li {
+        margin-bottom: 10px;
+        padding-left: 20px;
+        position: relative;
+    }
+    .content-section ul li::before {
+        content: "\2022"; /* bullet point */
+        color: var(--btn-color);
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+    .content-section .sub-content {
+        background-color: var(--highlight-color);
+        padding: 25px;
+        border-radius: 8px;
+        margin-top: 20px;
+        border-left: 4px solid var(--secondary-color);
+    }
+
+    /* 표 스타일 */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 1em;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    th, td {
+        border: 1px solid var(--table-border-color);
+        padding: 12px 15px;
+        text-align: left;
+    }
+    th {
+        background-color: var(--primary-color);
+        color: var(--bg-white);
+        font-weight: 500;
+    }
+    tr:nth-child(even) {
+        background-color: var(--highlight-color);
+    }
+    .table-caption {
+        font-weight: 600;
+        font-size: 1.2em;
+        margin-bottom: 10px;
+        color: var(--secondary-color);
+    }
+
+    /* 그래프 스타일 (HTML로 구현) */
+    .bar-chart {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-around;
+        height: 200px;
+        margin-top: 30px;
+        padding: 10px;
+        background-color: var(--highlight-color);
+        border-radius: 8px;
+        position: relative;
+        overflow: hidden;
+    }
+    .bar-chart .bar {
+        width: 18%;
+        background-color: var(--graph-bar-color);
+        position: relative;
+        transition: height 0.5s ease;
+        border-radius: 5px 5px 0 0;
+    }
+    .bar-chart .bar span {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: var(--primary-color);
+    }
+    .bar-chart .label {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 5px;
+        font-size: 0.9em;
+        font-weight: 500;
+        white-space: nowrap;
+    }
+
+    /* FAQ 스타일 */
+    .faq-item {
+      border-bottom:1px solid #ddd;
+      padding:20px 0;
+    }
+    .faq-item h3 {
+      cursor:pointer;
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      font-size:1.4em;
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    .faq-item h3::after {
+      content: '+';
+      font-size:1.5em;
+      color: var(--secondary-color);
+      transition: transform 0.3s;
+      margin-left: 10px;
+    }
+    .faq-item.active h3::after {
+      content: '-';
+      transform: rotate(180deg);
+    }
+    .faq-item p {
+      display: none;
+      padding-top:10px;
+      color:#555;
+      font-size:1.1em;
+      line-height: 1.6;
+    }
+    .faq-item.active p {
+      display: block;
+    }
+
+    /* 키워드 리스트 스타일 */
+    .keyword-list {
+      list-style:none;
+      padding:0;
+      display:flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top:30px;
+    }
+    .keyword-list li {
+      background-color: var(--secondary-color);
+      color: var(--bg-white);
+      padding:10px 20px;
+      margin:5px;
+      border-radius:20px;
+      font-weight:500;
+      font-size: 0.95em;
+      transition: background-color 0.3s;
+    }
+    .keyword-list li:hover {
+        background-color: var(--primary-color);
+    }
+
+    /* 기타 요소 */
+    .text-highlight {
+        color: var(--btn-color);
+        font-weight: bold;
+    }
+    .note {
+        padding: 15px;
+        background-color: var(--accent-color);
+        border-radius: 8px;
+        border-left: 5px solid var(--primary-color);
+        font-size: 1em;
+        margin-bottom: 20px;
+        color: var(--text-color);
+    }
+
+    /* 푸터 스타일 */
+    footer {
+      background-color: var(--primary-color);
+      color: var(--bg-white);
+      text-align:center;
+      padding: 40px 20px;
+      font-size:0.9em;
+      margin-top: 30px;
+    }
+    footer a {
+      color: var(--bg-white);
+      text-decoration:none;
+      margin:0 10px;
+    }
+    footer a:hover {
+      text-decoration:underline;
+    }
+
+    @media (max-width:768px) {
+      .hero h1 { font-size:2.8em; }
+      .hero p { font-size:1.1em; }
+      .cta-btn { padding:15px 30px; font-size:1.1em; }
+      .compare-form-box { padding:25px; }
+      .content-section h2 { font-size:2.2em; }
+      .keyword-list li { margin:3px; font-size:0.9em; }
+      .bar-chart { height: 150px; }
+      th, td { padding: 10px; font-size: 0.9em; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1><a href="/">시험관태아보험 2026 비교 센터</a></h1>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>2026년 시험관태아보험, 가장 확실한 선택은?</h1>
+        <p>시험관 아기(IVF)를 위한 맞춤 태아보험! 복잡한 가입 조건, 보장 내역, 보험료를 꼼꼼하게 비교 분석하여 <span class="text-highlight">최적의 상품</span>을 찾아드립니다.</p>
+        <div class="compare-form-box">
+          <h2>시험관태아보험 무료 견적 비교 요청</h2>
+          <p>임신 주수, 희망 보장 범위 등 간단한 정보 입력으로 여러 보험사의 <span class="text-highlight">정확한 예상 보험료와 상품 상세 비교</span> 결과를 받아보세요.</p>
+          <form action="#" method="post">
+            <div class="form-group">
+                <label for="name">이름</label>
+                <input type="text" id="name" name="name" placeholder="산모님 성함을 입력하세요" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">연락처</label>
+                <input type="tel" id="phone" name="phone" placeholder="휴대폰 번호를 입력하세요" required>
+            </div>
+            <div class="form-group">
+                <label for="dueDate">예정일(출산 예정월)</label>
+                <input type="text" id="dueDate" name="dueDate" placeholder="예: 2026년 5월" required>
+            </div>
+            <div class="form-group">
+                <label for="pregnancyType">임신 유형</label>
+                <select id="pregnancyType" name="pregnancyType" required>
+                    <option value="">-- 선택하세요 --</option>
+                    <option value="시험관">시험관 시술 (IVF)</option>
+                    <option value="인공수정">인공수정</option>
+                    <option value="자연임신">자연임신 (고위험 산모)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="twins">쌍둥이 여부</label>
+                <select id="twins" name="twins" required>
+                    <option value="단태아">단태아</option>
+                    <option value="쌍둥이">쌍둥이</option>
+                </select>
+            </div>
+            <button type="submit" class="cta-btn">맞춤 견적 요청하기</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>시험관태아보험, 왜 일반 보험과 다르게 접근해야 할까요?</h2>
+        <p>시험관 아기(IVF) 임신의 경우, 일반적인 자연 임신과는 다른 여러 가지 요소들을 고려해야 합니다. 특히 <span class="text-highlight">산모의 나이, 난임 시술 과정, 다태아 임신 가능성</span> 등이 태아의 건강과 직결될 수 있어 보험 가입 시 더 꼼꼼한 심사가 요구됩니다. 일반 태아보험은 이러한 특수성을 충분히 반영하지 못하는 경우가 많으므로, 시험관 시술에 대한 이해도가 높은 전문가의 맞춤 설계가 필수적입니다.</p>
+
+        <h3>시험관 시술 임신의 주요 특징과 보험 가입의 중요성</h3>
+        <p>시험관 시술(IVF)을 통한 임신은 인공수정 과정을 거치기 때문에, 일반적인 임신에 비해 몇 가지 특징이 있습니다. 2026년 기준으로, 난임 시술을 받는 부부가 증가하면서 시험관태아보험에 대한 관심도 높아지고 있습니다. 주요 특징은 다음과 같습니다:</p>
+        <ul>
+            <li><strong class="text-highlight">다태아(쌍둥이) 임신 확률 증가:</strong> 시험관 시술은 착상 성공률을 높이기 위해 여러 개의 수정란을 이식하는 경우가 많아 쌍둥이 임신 확률이 높습니다. 쌍둥이는 단태아에 비해 <span class="text-highlight">조산 및 저체중아 출산 위험</span>이 높으며, 이로 인해 인큐베이터 사용이나 기타 선천성 질환 발생률이 증가할 수 있습니다.</li>
+            <li><strong class="text-highlight">산모의 건강 상태 고려:</strong> 난임 시술을 받는 산모는 고령 임신이거나 기존에 난임 원인 질환을 겪었을 가능성이 높습니다. 이로 인해 임신 중 합병증 발생 위험이 상대적으로 높아질 수 있습니다.</li>
+            <li><strong class="text-highlight">까다로운 심사 기준:</strong> 보험사는 태아보험 가입 시 고지 의무(告知義務)를 통해 산모의 건강 상태와 임신 경과를 확인합니다. 시험관 임신의 경우 일반 임신보다 더 철저한 심사 과정을 거치게 됩니다.</li>
+        </ul>
+        <div class="sub-content">
+            <p><strong>전문가 팁:</strong> 시험관 시술로 임신한 경우, 임신 확인 즉시 태아보험 가입을 서두르는 것이 좋습니다. 임신 주수가 지날수록 산모나 태아에게 이상 징후가 발견될 확률이 높아져 가입이 거절되거나 보장 내용이 제한될 수 있습니다. 특히 22주 이후에는 선천성 질환 관련 특약 가입이 불가능해집니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>시험관태아보험 vs 일반 태아보험 보장 내용 비교</h2>
+        <p>시험관태아보험은 일반 태아보험의 기본 보장(선천성 질환, 출산 위험, 어린이 보험 전환 등)을 포함하면서도, 시험관 시술 임신의 특성을 반영하여 심사를 진행합니다. 2026년 기준으로 주요 보험사들이 제공하는 상품들은 다음과 같은 핵심 보장을 중심으로 구성됩니다.</p>
+
+        <h3 style="margin-top:50px;">핵심 보장 분석: 저체중아 인큐베이터 vs 선천성 질환</h3>
+        <p>시험관 아기 보험에서 가장 중요하게 고려해야 할 보장은 '저체중아 인큐베이터 입원일당'과 '선천성 질환 수술/진단비'입니다. 특히 다태아 임신의 경우 조산으로 인한 저체중아 출산 확률이 높으므로, 이 두 가지 보장의 한도와 보장 기간을 확인하는 것이 필수입니다. 각 보험사마다 보장 한도와 금액이 다르므로 <span class="text-highlight">꼼꼼한 비교 견적</span>을 통해 유리한 상품을 선택해야 합니다.</p>
+
+        <table class="data-table">
+            <caption class="table-caption">2026년 시험관태아보험 주요 보장 비교 (예시)</caption>
+            <thead>
+                <tr>
+                    <th>구분</th>
+                    <th>일반 태아보험</th>
+                    <th>시험관태아보험(특화)</th>
+                    <th>참고사항</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>가입 조건</td>
+                    <td>산모의 특별한 병력 없이 임신 초기부터 가입 가능</td>
+                    <td>난임 시술 여부, 다태아 여부 등 심사 강화</td>
+                    <td>고지 의무 철저히 이행해야 함</td>
+                </tr>
+                <tr>
+                    <td>선천성 질환 보장</td>
+                    <td>주요 선천성 질환 보장(다운증후군, 심장병 등)</td>
+                    <td>일반 보험과 동일하게 보장</td>
+                    <td>가입 시기(22주) 전 가입 필수</td>
+                </tr>
+                <tr>
+                    <td>저체중아/조산아 보장</td>
+                    <td>저체중아 인큐베이터 입원비 보장</td>
+                    <td>다태아 특약으로 보장 금액 확대 가능성 있음</td>
+                    <td>다태아의 경우 보험료 할증 또는 가입 제한 가능성 있음</td>
+                </tr>
+                <tr>
+                    <td>어린이/성인 보험 전환</td>
+                    <td>출생 후 자동으로 어린이 보험으로 전환</td>
+                    <td>출생 후 심사 없이 전환 가능</td>
+                    <td>100세 만기 시점 보장 내용 확인</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>시험관 쌍둥이 태아보험 가입 팁</h3>
+        <p>다태아(쌍둥이) 임신은 시험관 시술의 주요 특징 중 하나입니다. 쌍둥이 태아보험 가입은 단태아와 비교해 복잡하며 보험료도 높습니다. 쌍둥이는 조산 및 저체중아 출산 위험이 3~5배가량 높다고 알려져 있습니다. 따라서 태아보험 가입 시 <span class="text-highlight">저체중아 보장, 인큐베이터 비용, 다태아 특약</span>에 집중해야 합니다.</p>
+        <div class="sub-content">
+            <h4>다태아 보험 가입 시 고려 사항</h4>
+            <ul>
+                <li><strong>별도 계약:</strong> 쌍둥이 각각의 태아보험을 따로 가입해야 합니다.</li>
+                <li><strong>보험료 할증:</strong> 일반적인 단태아 대비 보험료가 할증될 수 있습니다. (회사별 상이)</li>
+                <li><strong>보장 제한:</strong> 일부 보험사에서는 특정 특약 가입을 제한할 수 있습니다.</li>
+            </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>시험관태아보험 가입 시기와 2026년 가입 전략</h2>
+        <p>태아보험 가입 시기는 빠를수록 좋습니다. 특히 시험관 시술 임신의 경우, 임신 확인 직후부터 22주 이전까지가 가입 적정 시기입니다. 2026년에도 이 가이드라인은 변함없이 적용됩니다.</p>
+        <h3>가입 적기: 임신 12주 ~ 22주</h3>
+        <p>임신 초기(12주 이전)에는 심장 박동 등 태아의 건강 상태가 불안정할 수 있어 보험 가입 심사가 어려울 수 있습니다. 반면, 22주 이후에는 태아의 성별이 확인되며 주요 선천성 질환 관련 보장을 받을 수 있는 태아 특약 가입이 불가능해집니다. 따라서 임신 12주 이후부터 22주 사이가 <span class="text-highlight">가장 좋은 가입 타이밍</span>입니다.</p>
+        <h3>가입 시 고지 의무: 신중한 접근 필요</h3>
+        <p>시험관 아기 보험 가입 시에는 산모의 과거 병력, 난임 시술 과정, 현재 임신 중 특이 사항(고혈압, 당뇨 등)을 정확하게 고지해야 합니다. 고의로 중요한 사실을 알리지 않으면 보험 계약이 해지될 수 있습니다. 따라서 전문가와 상담하여 고지 의무를 정확히 이행하고, 고지 내용에 따라 보험사별 심사 기준을 비교하여 가장 유리한 조건을 찾아야 합니다.</p>
+
+        <h3>2026년 시험관태아보험 평균 비용 및 절약 팁</h3>
+        <p>시험관태아보험의 보험료는 산모의 나이, 보장 기간(30세 vs 100세), 특약 구성, 태아의 건강 상태 등에 따라 크게 달라집니다. 2026년 기준으로 평균적인 시험관 태아보험료는 월 5만원~10만원 수준이지만, 개인별 상황에 따라 편차가 큽니다. 보험료를 절약하기 위한 팁은 다음과 같습니다:</p>
+        <ul>
+            <li><strong>순수보장형 vs 만기환급형:</strong> 보험료가 상대적으로 저렴한 <span class="text-highlight">순수보장형</span>을 선택하면 만기 환급금이 없는 대신 월 납입료를 절감할 수 있습니다.</li>
+            <li><strong>불필요한 특약 제외:</strong> 기본적인 실손 보장과 핵심 태아 특약 외에 불필요한 자녀 특약을 과도하게 추가하지 않습니다.</li>
+            <li><strong>보장 기간 선택:</strong> 30세 만기로 가입 후 성인이 되어 전환하는 것이 100세 만기보다 초기 보험료가 저렴합니다.</li>
+            <li><strong>비교 견적 필수:</strong> 여러 보험사의 상품을 동시에 비교하여 가장 저렴하고 보장 좋은 상품을 선택하는 것이 가장 확실한 절약 방법입니다.</li>
+        </ul>
+
+        <h3 style="margin-top:50px;">보험료 구성 요소 시각화 (그래프)</h3>
+        <p>아래 그래프는 시험관 태아보험료 구성 요소가 차지하는 비중을 예시로 보여줍니다. <span class="text-highlight">핵심 보장과 선택 특약의 비중</span>을 조절하여 보험료를 효율적으로 설계할 수 있습니다.</p>
+        <div class="bar-chart">
+            <div class="bar" style="height: 80%;"><span>핵심 보장 (선천성/질병)</span><div class="label">핵심 보장</div></div>
+            <div class="bar" style="height: 60%;"><span>선택 특약 (입원/수술)</span><div class="label">선택 특약</div></div>
+            <div class="bar" style="height: 40%;"><span>출산 관련 특약</span><div class="label">출산 특약</div></div>
+            <div class="bar" style="height: 20%;"><span>어린이 성장 특약</span><div class="label">성장 특약</div></div>
+            <div class="bar" style="height: 10%;"><span>만기 환급금</span><div class="label">환급금</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>시험관태아보험 가입 후기 및 자주 묻는 질문 (FAQ)</h2>
+        <p>시험관 아기 보험을 가입한 실제 산모들의 후기에서 공통적으로 언급되는 부분은 "가입 시기의 중요성"과 "보장 내용의 복잡성"입니다. 많은 산모들이 가입 시기를 놓쳐서 후회하거나, 복잡한 보장 내용을 이해하지 못해 불필요한 지출을 하는 경우가 많습니다. 저희 비교 센터는 이러한 어려움을 해소하기 위해 전문 상담 서비스를 제공합니다.</p>
+
+        <h3>가장 많이 찾는 키워드 (자동완성 키워드 분석)</h3>
+        <ul class="keyword-list">
+            <li>#시험관태아보험</li>
+            <li>#시험관아기보험</li>
+            <li>#인공수정태아보험</li>
+            <li>#시험관태아보험가입시기</li>
+            <li>#시험관태아보험비교</li>
+            <li>#시험관쌍둥이보험</li>
+            <li>#시험관태아보험순위</li>
+            <li>#시험관태아보험추천</li>
+            <li>#저렴한시험관태아보험</li>
+            <li>#2026년태아보험</li>
+            <li>#고위험산모태아보험</li>
+            <li>#다태아태아보험</li>
+            <li>#태아보험내돈내산후기</li>
+            <li>#시험관태아보험장단점</li>
+            <li>#태아보험가입조건</li>
+            <li>#태아보험보장내용</li>
+            <li>#태아보험견적금액</li>
+            <li>#태아보험가격비교</li>
+            <li>#손해보험사태아보험</li>
+            <li>#생명보험사태아보험</li>
+            <li>#태아보험만기선택</li>
+            <li>#태아보험고지사항</li>
+            <li>#시험관시술보험료할증</li>
+            <li>#태아보험상담</li>
+            <li>#임신22주이전가입</li>
+            <li>#태아특약필수</li>
+            <li>#저체중아인큐베이터비용</li>
+            <li>#선천성질환보장범위</li>
+            <li>#시험관성공후보험가입</li>
+        </ul>
+
+        <h3 style="margin-top:50px;">자주 묻는 질문 (FAQ) 상세 답변</h3>
+        <!-- FAQ item 1 (From schema) -->
+        <div class="faq-item">
+          <h3>시험관태아보험은 일반 태아보험과 무엇이 다른가요?</h3>
+          <p>시험관태아보험은 일반 태아보험 가입이 어려운 경우를 위해 설계된 상품입니다. 시험관 시술(인공수정 포함)로 인한 다태아(쌍둥이) 임신, 고위험 산모 등에게 특화된 가입 조건과 보장 항목을 제공하며, 일반 보험 대비 가입 가능 시기나 조건이 까다로울 수 있습니다.</p>
+        </div>
+
+        <!-- FAQ item 2 (From schema) -->
+        <div class="faq-item">
+          <h3>시험관태아보험 가입 시기는 언제인가요?</h3>
+          <p>일반적으로 임신 22주 이전(고위험 산모는 더 일찍)에 가입해야 태아 특약(선천성 질환 등)을 보장받을 수 있습니다. 시험관 임신의 경우 일반 임신보다 더 철저한 심사가 필요하므로 임신 사실 확인 즉시 전문가와 상담하여 가입을 서두르는 것이 좋습니다.</p>
+        </div>
+
+        <!-- FAQ item 3 (From schema) -->
+        <div class="faq-item">
+          <h3>시험관태아보험 가입 조건이 일반 보험보다 까다로운가요?</h3>
+          <p>네, 시험관 시술 과정에서 산모의 병력이나 임신 합병증 발생 가능성이 높을 수 있어 심사가 까다로울 수 있습니다. 특히 다태아(쌍둥이) 임신이거나 산모 나이가 많을 경우, 특정 질환 이력이 있을 경우 고지 의무를 철저히 지켜야 합니다. 하지만 고지 내용을 바탕으로 적절한 상품을 찾는 것이 중요합니다.</p>
+        </div>
+
+        <!-- FAQ item 4 (From schema) -->
+        <div class="faq-item">
+          <h3>가장 저렴한 시험관태아보험을 찾는 팁이 있나요?</h3>
+          <p>불필요한 보장을 줄이고 핵심 보장(선천성 질환, 저체중아 인큐베이터 등) 위주로 구성합니다. 또한 보험료가 저렴한 손해보험사 상품과 생명보험사 상품을 비교하고, 보장 기간(30세 만기 vs 100세 만기)을 선택할 때 신중하게 고려하는 것이 중요합니다.</p>
+        </div>
+
+        <!-- FAQ item 5 (From schema) -->
+        <div class="faq-item">
+          <h3>태아보험에 가입할 때 다태아(쌍둥이)는 어떻게 가입하나요?</h3>
+          <p>다태아의 경우 태아 1명당 각각의 보험에 가입해야 합니다. 1인당 보험료는 단태아보다 높게 책정될 수 있으며, 가입 가능한 보장이 일부 제한될 수 있습니다. 여러 보험사 상품을 비교하여 다태아에게 유리한 상품을 찾는 것이 중요합니다.</p>
+        </div>
+
+        <!-- New FAQ item -->
+        <div class="faq-item">
+          <h3>보험료 납입 기간을 짧게 설정해도 될까요?</h3>
+          <p>납입 기간을 짧게 설정하면 총 납입 금액은 줄어들 수 있지만, 월별 납입 보험료가 높아져 부담이 될 수 있습니다. 30세 만기 상품의 경우 20년 납, 100세 만기 상품의 경우 30년 납이 일반적입니다. 재정 상황을 고려하여 적절한 기간을 선택하세요.</p>
+        </div>
+        <!-- New FAQ item -->
+        <div class="faq-item">
+          <h3>보험 가입 시 고지해야 하는 산모의 질병은 무엇인가요?</h3>
+          <p>임신 전후로 진단받은 고혈압, 당뇨, 갑상선 질환, 자궁 관련 질환 등은 반드시 고지해야 합니다. 또한 최근 5년 이내 입원, 수술, 7일 이상 통원 치료 여부 등도 확인합니다. 고지 의무를 위반할 경우 보험금 지급에 문제가 생길 수 있으므로 솔직하게 알려야 합니다.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>신뢰할 수 있는 외부 자료 및 참고 링크</h2>
+        <p>시험관태아보험은 난임 치료 및 출산과 관련된 전문적인 분야이므로, 공신력 있는 기관의 자료를 참고하는 것이 중요합니다. 아래 링크들은 난임 시술 지원 정책, 보험 관련 법규, 산모 건강 정보 등을 확인할 수 있는 신뢰할 수 있는 정보원입니다.</p>
+        <ul>
+          <li><a href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%82%9C%EC%9E%84%EA%B4%80%EB%A0%A8%EC%A7%80%EC%9B%90%EB%B2%95" target="_blank" rel="noopener">난임부부 지원에 관한 법률 (보건복지부)</a></li>
+          <li><a href="https://www.fss.or.kr/fss/main/index.do" target="_blank" rel="noopener">금융감독원 (보험 소비자 정보 포털)</a></li>
+          <li><a href="https://www.nhis.or.kr/nhis/index.do" target="_blank" rel="noopener">국민건강보험공단 (임산부 의료비 지원 정보)</a></li>
+          <li><a href="https://ko.wikipedia.org/wiki/%EC%8B%9C%ED%97%98%EA%B4%80_%EC%95%84%EA%B8%B0" target="_blank" rel="noopener">시험관 아기 - 위키백과</a></li>
+          <li><a href="http://www.klia.or.kr/main/index.do" target="_blank" rel="noopener">생명보험협회 (보험 상품 비교 공시)</a></li>
+        </ul>
+        <div class="note">
+            <p><strong>참고:</strong> 위 자료들은 시험관태아보험 가입에 필요한 기본 정보를 제공합니다. 상품별 세부 내용은 보험사 약관을 통해 반드시 확인해야 하며, 본 사이트는 비교 견적을 위한 플랫폼으로, 계약 당사자는 아닙니다.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p><strong>시험관태아보험 비교 센터</strong> &copy; 2026 All Rights Reserved.</p>
+      <p>
+        <a href="#">개인정보처리방침</a>
+        <a href="#">이용약관</a>
+        <a href="#">문의하기</a>
+      </p>
+      <p>본 사이트는 시험관태아보험 상품에 대한 비교 정보를 제공하며, 실제 계약은 고객님께서 선택하신 보험사와 직접 진행됩니다.</p>
+    </div>
+  </footer>
+
+  <script>
+    // FAQ 토글 기능
+    document.querySelectorAll('.faq-item h3').forEach(item => {
+      item.addEventListener('click', event => {
+        const parent = item.parentElement;
+        parent.classList.toggle('active');
+      });
+    });
+  </script>
+
+  
